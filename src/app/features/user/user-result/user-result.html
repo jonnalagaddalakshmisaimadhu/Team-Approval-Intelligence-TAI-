@@ -1,0 +1,124 @@
+<div class="min-h-screen bg-gray-50 p-4 flex justify-center items-center">
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center animate-pulse">
+        <div class="glass-panel p-10 flex flex-col items-center">
+            <mat-spinner diameter="80" color="primary"></mat-spinner>
+            <h2 class="text-2xl font-bold mt-6 text-gray-700">Analyzing your profile with AI...</h2>
+            <p class="text-gray-500 mt-2">Checking eligibility across 10 banks</p>
+        </div>
+    </div>
+
+    <!-- Result State -->
+    <div *ngIf="!loading" class="w-full max-w-4xl animate-fade-in-up">
+
+        <!-- Rejected -->
+        <div *ngIf="!approved" class="glass-panel p-8 border-l-8 border-red-500 bg-white">
+            <div class="flex items-center gap-4 mb-4">
+                <mat-icon class="text-red-500 text-5xl">highlight_off</mat-icon>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">Application Not Approved</h2>
+                    <p class="text-red-500 font-medium">Risk Assessment Score: High</p>
+                </div>
+            </div>
+            <p class="text-gray-600 mb-6">
+                Based on your current profile, we could not find a matching bank offer at this time.
+                This is likely due to high existing EMI obligations or insufficient credit history.
+            </p>
+
+            <h3 class="font-semibold text-lg mb-3">Improvement Suggestions:</h3>
+            <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+                <li>Reduce existing loan obligations.</li>
+                <li>Improve CIBIL score by paying credit card bills on time.</li>
+                <li>Apply with a co-applicant having a steady income.</li>
+            </ul>
+
+            <button mat-stroked-button color="warn" routerLink="/user/eligibility">Try Again</button>
+        </div>
+
+        <!-- Approved -->
+        <div *ngIf="approved" class="glass-panel p-8 border-l-8 border-green-500 bg-white">
+            <div class="flex items-center gap-4 mb-6">
+                <mat-icon class="text-green-500 text-5xl">check_circle</mat-icon>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">Congratulations! You are Eligible</h2>
+                    <p class="text-green-600 font-medium">We found exceptional offers for you.</p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4 text-gray-700">Top Bank Recommendations</h3>
+            <p class="text-sm text-gray-500 mb-6">Select a bank to proceed with the final approval.</p>
+
+            <div class="space-y-4 mb-8">
+                <div *ngFor="let bank of banks"
+                    class="border rounded-xl p-4 flex flex-col md:flex-row items-center justify-between hover:shadow-md transition-all cursor-pointer"
+                    [class.border-blue-500]="selectedBank === bank" [class.bg-blue-50]="selectedBank === bank"
+                    (click)="selectedBank = bank">
+
+                    <div class="flex items-center gap-4 w-full md:w-1/3">
+                        <div class="text-2xl font-bold" [ngClass]="bank.color">{{ bank.name }}</div>
+                    </div>
+
+                    <div class="w-full md:w-1/3 px-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Match Probability</span>
+                            <span class="font-bold">{{ bank.probability }}%</span>
+                        </div>
+                        <mat-progress-bar mode="determinate" [value]="bank.probability"
+                            [color]="bank.probability > 80 ? 'primary' : 'accent'"
+                            class="rounded-full h-2"></mat-progress-bar>
+                    </div>
+
+                    <div class="flex items-center gap-6 mt-4 md:mt-0">
+                        <span class="px-3 py-1 rounded-full text-xs font-bold"
+                            [ngClass]="{'bg-green-100 text-green-700': bank.risk === 'Low', 'bg-yellow-100 text-yellow-700': bank.risk === 'Medium', 'bg-red-100 text-red-700': bank.risk === 'High'}">
+                            {{ bank.risk }} Risk
+                        </span>
+                        <mat-radio-button [checked]="selectedBank === bank"
+                            (click)="selectedBank = bank"></mat-radio-button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-4">
+                <button mat-button routerLink="/">Back to Home</button>
+                <button mat-raised-button color="primary" [disabled]="!selectedBank" class="py-2 px-6"
+                    (click)="onProceed()">
+                    Proceed with {{ selectedBank?.name || 'Selection' }}
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Contact Details Popup -->
+<div *ngIf="showApplyDialog"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fade-in">
+    <div class="bg-white rounded-xl p-8 max-w-md w-full shadow-2xl">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Final Step</h2>
+        <p class="text-gray-500 mb-6">Enter your details to send a request to <span class="font-bold text-blue-600">{{
+                selectedBank?.name }}</span>.</p>
+
+        <div class="space-y-4">
+            <div class="flex flex-col gap-1">
+                <label class="font-medium text-gray-700">Full Name</label>
+                <input type="text" [(ngModel)]="applicantName"
+                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Enter your full name">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="font-medium text-gray-700">Mobile Number</label>
+                <input type="tel" [(ngModel)]="applicantMobile"
+                    class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Enter 10-digit mobile number">
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-8">
+            <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+            <button mat-raised-button color="primary" (click)="confirmApply()">Submit Request</button>
+        </div>
+    </div>
+</div>

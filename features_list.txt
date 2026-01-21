@@ -1,0 +1,1 @@
+['Age', 'Gender', 'Marital_Status', 'Dependents', 'Education', 'Self_Employed', 'Work_Experience_Years', 'ApplicantIncome', 'CoapplicantIncome', 'Salary_Payment_Mode', 'Existing_EMI', 'Residential_Assets', 'Area', 'Loan_Purpose', 'LoanAmount', 'Loan_Amount_Term']

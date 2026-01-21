@@ -1,0 +1,104 @@
+<div class="min-h-screen bg-gray-50">
+    <!-- Top Nav -->
+    <nav class="bg-white shadow-sm px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <mat-icon class="text-blue-700">account_balance</mat-icon>
+            <span class="font-bold text-xl text-gray-800">{{ officerBank }} Officer Portal</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <button mat-icon-button>
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <div class="flex items-center gap-2">
+                <span class="text-sm font-medium text-gray-700">{{ officerName }}</span>
+                <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                    <mat-icon class="text-gray-500">person</mat-icon>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="p-8 max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Dashboard Overview</h1>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">Total Applications</div>
+                <div class="text-3xl font-bold text-gray-800">{{ stats.total }}</div>
+                <div class="text-green-500 text-xs mt-2 flex items-center">
+                    <mat-icon class="text-xs mr-1">trending_up</mat-icon> +12% this week
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">Approved</div>
+                <div class="text-3xl font-bold text-gray-800">{{ stats.approved }}</div>
+                <div class="text-blue-500 text-xs mt-2">{{ stats.approvalRate }}% Approval Rate</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">Pending Review</div>
+                <div class="text-3xl font-bold text-gray-800">{{ stats.pending }}</div>
+                <div class="text-orange-500 text-xs mt-2">Needs Attention</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="text-gray-500 text-sm mb-1">High Risk</div>
+                <div class="text-3xl font-bold text-gray-800">{{ stats.highRisk }}</div>
+                <div class="text-red-500 text-xs mt-2">Flagged for Fraud</div>
+            </div>
+        </div>
+
+        <!-- Applications Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-800">Recent Applications</h2>
+                <button mat-stroked-button color="primary">View All</button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <div *ngIf="applications.length === 0" class="p-8 text-center text-gray-500">
+                    No applications pending for review.
+                </div>
+                <table class="w-full text-left" *ngIf="applications.length > 0">
+                    <thead class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
+                        <tr>
+                            <th class="px-6 py-4 font-semibold">Applicant</th>
+                            <th class="px-6 py-4 font-semibold">Income</th>
+                            <th class="px-6 py-4 font-semibold">Loan Amount</th>
+                            <th class="px-6 py-4 font-semibold">Risk Level</th>
+                            <th class="px-6 py-4 font-semibold">Status</th>
+                            <th class="px-6 py-4 font-semibold">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr *ngFor="let app of applications" class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="font-medium text-gray-800">{{ app.name }}</div>
+                                <div class="text-xs text-gray-500">ID: #{{ app.id }}</div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-600">₹{{ app.income | number }}</td>
+                            <td class="px-6 py-4 text-gray-600">₹{{ app.loanAmount | number }}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-1 rounded-full text-xs font-bold"
+                                    [ngClass]="{'bg-green-100 text-green-700': app.risk === 'Low', 'bg-yellow-100 text-yellow-700': app.risk === 'Medium', 'bg-red-100 text-red-700': app.risk === 'High'}">
+                                    {{ app.risk }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold border"
+                                    [ngClass]="getStatusColor(app.status)">
+                                    {{ app.status }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button mat-icon-button color="primary" [routerLink]="['/officer/review', app.id]"
+                                    title="Review">
+                                    <mat-icon>visibility</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

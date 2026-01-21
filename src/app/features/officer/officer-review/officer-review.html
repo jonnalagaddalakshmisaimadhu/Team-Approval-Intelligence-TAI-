@@ -1,0 +1,142 @@
+<div class="min-h-screen bg-gray-50 pb-20">
+    <!-- Nav -->
+    <nav class="bg-white shadow-sm px-8 py-4 flex items-center gap-4">
+        <button mat-icon-button routerLink="/officer/dashboard">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800">Review Application #{{ applicant.id }}</h1>
+    </nav>
+
+    <div class="p-8 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Left Column: Details -->
+        <div class="lg:col-span-2 space-y-6">
+
+            <!-- Personal Info -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <mat-icon class="text-blue-500">person</mat-icon> Personal Information
+                </h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <div class="text-gray-500">Full Name</div>
+                        <div class="font-medium">{{ applicant.name }}</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Mobile Number</div>
+                        <div class="font-medium">{{ applicant.mobile }}</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Age</div>
+                        <div class="font-medium">{{ applicant.age }} Years</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Gender</div>
+                        <div class="font-medium">{{ applicant.gender }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Info -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <mat-icon class="text-green-500">attach_money</mat-icon> Financial Profile
+                </h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <div class="text-gray-500">Occupation</div>
+                        <div class="font-medium">{{ applicant.occupation }}</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Monthly Income</div>
+                        <div class="font-medium">₹{{ applicant.income | number }}</div>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="text-gray-500 mb-1">Final CIBIL Score</div>
+                        <div class="flex gap-2 items-center">
+                            <input type="number" [(ngModel)]="finalCibilScore"
+                                class="border border-gray-300 rounded px-2 py-1 w-32 focus:outline-none focus:border-blue-500"
+                                placeholder="Enter Score">
+                            <!-- Removed disabled constraint to allow using system default -->
+                            <button mat-flat-button color="accent" size="small" (click)="runPrediction()">
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Info -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <mat-icon class="text-purple-500">home</mat-icon> Loan Request
+                </h3>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <div class="text-gray-500">Requested Amount</div>
+                        <div class="font-medium">₹{{ applicant.loanAmount | number }}</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Tenure</div>
+                        <div class="font-medium">{{ applicant.tenure }} Months</div>
+                    </div>
+                    <div>
+                        <div class="text-gray-500">Purpose</div>
+                        <div class="font-medium">Home Renovation</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Column: AI Analysis -->
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-gradient-to-br from-indigo-900 to-blue-900 text-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                    <mat-icon>psychology</mat-icon> AI Risk Analysis
+                </h3>
+
+                <div class="text-center mb-8">
+                    <div
+                        class="inline-flex justify-center items-center w-32 h-32 rounded-full border-8 border-green-400 mb-4 relative">
+                        <span class="text-3xl font-bold">{{ applicant.approvalProbability }}%</span>
+                    </div>
+                    <p class="text-blue-200">Approval Probability</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-blue-200">Risk Level</span>
+                        <span class="bg-green-500 text-white px-3 py-1 rounded-full font-bold text-xs">{{ applicant.risk
+                            }}</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-blue-200">Fraud Check</span>
+                        <span class="text-green-400 font-bold flex items-center gap-1"><mat-icon
+                                class="text-sm">verified</mat-icon> Passed</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm" *ngIf="applicant.eligibleAmount > 0">
+                        <span class="text-blue-200">Eligible Amount</span>
+                        <span class="text-white font-bold text-lg">₹{{ applicant.eligibleAmount | number:'1.0-0'
+                            }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 class="font-bold text-gray-800 mb-2">Officer Decision</h3>
+                <p class="text-gray-500 text-sm mb-6">Review the AI recommendations and take a final action.</p>
+
+                <div class="flex flex-col gap-3">
+                    <button mat-flat-button color="primary" class="w-full py-6" (click)="approveLoan()">
+                        <mat-icon>check</mat-icon> Approve Loan
+                    </button>
+                    <button mat-stroked-button color="warn" class="w-full" (click)="rejectLoan()">
+                        <mat-icon>close</mat-icon> Reject Loan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

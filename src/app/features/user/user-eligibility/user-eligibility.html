@@ -1,0 +1,174 @@
+<div class="min-h-screen bg-gray-50 p-4 md:p-8 flex justify-center items-start">
+    <div class="glass-panel w-full max-w-4xl p-6 md:p-10 shadow-xl bg-white">
+        <div class="mb-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800">Check Your Loan Eligibility</h2>
+            <p class="text-gray-500">Complete the steps below to get instant approval chances.</p>
+        </div>
+
+        <mat-stepper [linear]="isLinear" #stepper class="bg-transparent">
+            <!-- Step 1: Personal Details -->
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup" class="pt-4">
+                    <ng-template matStepLabel>Personal Details</ng-template>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Age</mat-label>
+                            <input matInput type="number" formControlName="age" placeholder="Ex. 30">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Gender</mat-label>
+                            <mat-select formControlName="gender">
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                                <mat-option value="Other">Other</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Marital Status</mat-label>
+                            <mat-select formControlName="maritalStatus">
+                                <mat-option value="Single">Single</mat-option>
+                                <mat-option value="Married">Married</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Dependents</mat-label>
+                            <mat-select formControlName="dependents">
+                                <mat-option value="0">0</mat-option>
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="3+">3+</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Education</mat-label>
+                            <mat-select formControlName="education">
+                                <mat-option value="Graduate">Graduate</mat-option>
+                                <mat-option value="Not Graduate">Not Graduate</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Area</mat-label>
+                            <mat-select formControlName="area">
+                                <mat-option value="Urban">Urban</mat-option>
+                                <mat-option value="Semiurban">Semiurban</mat-option>
+                                <mat-option value="Rural">Rural</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex justify-end mt-8">
+                        <button mat-raised-button color="primary" matStepperNext>Next Step</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!-- Step 2: Employment -->
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup" class="pt-4">
+                    <ng-template matStepLabel>Employment & Income</ng-template>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Self Employed?</label>
+                            <mat-radio-group formControlName="selfEmployed" class="flex gap-4">
+                                <mat-radio-button value="Yes" color="primary">Yes</mat-radio-button>
+                                <mat-radio-button value="No" color="primary">No</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Work Experience (Years)</mat-label>
+                            <input matInput type="number" formControlName="experience">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Salary Payment Mode</mat-label>
+                            <mat-select formControlName="salaryMode">
+                                <mat-option value="Bank Transfer">Bank Transfer</mat-option>
+                                <mat-option value="Cheque">Cheque</mat-option>
+                                <mat-option value="Cash">Cash</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Applicant Income (₹)</mat-label>
+                            <input matInput type="number" formControlName="applicantIncome">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Co-applicant Income (₹)</mat-label>
+                            <input matInput type="number" formControlName="coApplicantIncome">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next Step</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!-- Step 3: Loan Details -->
+            <mat-step [stepControl]="thirdFormGroup">
+                <form [formGroup]="thirdFormGroup" class="pt-4">
+                    <ng-template matStepLabel>Loan Requirements</ng-template>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Existing EMI (₹)</mat-label>
+                            <input matInput type="number" formControlName="existingEmi">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Residential Assets</mat-label>
+                            <mat-select formControlName="assets">
+                                <mat-option value="None">None</mat-option>
+                                <mat-option value="Own House">Own House</mat-option>
+                                <mat-option value="House + Land">House + Land</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Loan Purpose</mat-label>
+                            <mat-select formControlName="loanPurpose">
+                                <mat-option value="Medical">Medical</mat-option>
+                                <mat-option value="Wedding">Wedding</mat-option>
+                                <mat-option value="Education">Education</mat-option>
+                                <mat-option value="Home Renovation">Home Renovation</mat-option>
+                                <mat-option value="Asset Purchase">Asset Purchase</mat-option>
+                                <mat-option value="Other">Other</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Loan Amount Required (₹)</mat-label>
+                            <input matInput type="number" formControlName="loanAmount">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Loan Tenure (Months)</mat-label>
+                            <mat-select formControlName="tenure">
+                                <mat-option value="12">12 Months</mat-option>
+                                <mat-option value="24">24 Months</mat-option>
+                                <mat-option value="36">36 Months</mat-option>
+                                <mat-option value="60">60 Months</mat-option>
+                                <mat-option value="84">84 Months</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" (click)="submit()">Check Eligibility</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</div>

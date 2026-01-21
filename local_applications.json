@@ -1,0 +1,359 @@
+[
+    {
+        "input": {
+            "age": 45,
+            "gender": "Male",
+            "maritalStatus": "Married",
+            "dependents": "1",
+            "education": "Graduate",
+            "area": "Urban",
+            "selfEmployed": "Yes",
+            "experience": 7,
+            "applicantIncome": 88000,
+            "coApplicantIncome": 66000,
+            "salaryMode": "Bank Transfer",
+            "existingEmi": 2000,
+            "assets": "House + Land",
+            "loanPurpose": "Asset Purchase",
+            "loanAmount": 140000,
+            "tenure": "36",
+            "Name": "sai",
+            "Mobile": "8989323277"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 95.33000183105469,
+            "bank": "Bank of India",
+            "bank_list": [
+                {
+                    "name": "Bank of India",
+                    "probability": 94.3,
+                    "risk": "Low"
+                },
+                {
+                    "name": "IDFC FIRST Bank",
+                    "probability": 2.4,
+                    "risk": "High"
+                },
+                {
+                    "name": "YES Bank",
+                    "probability": 1.3,
+                    "risk": "High"
+                },
+                {
+                    "name": "ICICI Bank",
+                    "probability": 0.5,
+                    "risk": "High"
+                },
+                {
+                    "name": "IndusInd Bank",
+                    "probability": 0.5,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "applied",
+        "selected_bank": "Bank of India",
+        "timestamp": "2025-12-18T12:58:17.896777",
+        "_id": "cf5b91a4-fb56-4140-a1fc-c4ecf4a5dda5",
+        "applied_at": "2025-12-18T12:58:46.865545"
+    },
+    {
+        "input": {
+            "age": 25,
+            "gender": "Male",
+            "maritalStatus": "Single",
+            "dependents": "0",
+            "education": "Graduate",
+            "area": "Urban",
+            "selfEmployed": "No",
+            "experience": 3,
+            "applicantIncome": 50000,
+            "coApplicantIncome": "0",
+            "salaryMode": "Cash",
+            "existingEmi": 0,
+            "assets": "Own House",
+            "loanPurpose": "Education",
+            "loanAmount": 100000,
+            "tenure": "36",
+            "Name": "Sai",
+            "Mobile": "9876543210"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 94.54000091552734,
+            "bank": "ICICI Bank",
+            "bank_list": [
+                {
+                    "name": "ICICI Bank",
+                    "probability": 38.5,
+                    "risk": "High"
+                },
+                {
+                    "name": "Bank of India",
+                    "probability": 32.7,
+                    "risk": "High"
+                },
+                {
+                    "name": "Kotak Mahindra Bank",
+                    "probability": 12.3,
+                    "risk": "High"
+                },
+                {
+                    "name": "IndusInd Bank",
+                    "probability": 6.4,
+                    "risk": "High"
+                },
+                {
+                    "name": "State Bank of India (SBI)",
+                    "probability": 4.0,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "applied",
+        "selected_bank": "Bank of India",
+        "timestamp": "2025-12-18T13:17:15.139985",
+        "_id": "c764ceaa-8946-4291-ac2a-3c5c697d642e",
+        "applied_at": "2025-12-18T13:19:23.857202"
+    },
+    {
+        "input": {
+            "age": 44,
+            "gender": "Male",
+            "maritalStatus": "Married",
+            "dependents": "2",
+            "education": "Graduate",
+            "area": "Urban",
+            "selfEmployed": "Yes",
+            "experience": 16,
+            "applicantIncome": 88000,
+            "coApplicantIncome": 62000,
+            "salaryMode": "Bank Transfer",
+            "existingEmi": 2000,
+            "assets": "House + Land",
+            "loanPurpose": "Asset Purchase",
+            "loanAmount": 140000,
+            "tenure": "36",
+            "Name": "Sai",
+            "Mobile": "8978786245"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 72.62000274658203,
+            "bank": "Bank of India",
+            "bank_list": [
+                {
+                    "name": "Bank of India",
+                    "probability": 87.5,
+                    "risk": "Low"
+                },
+                {
+                    "name": "IDFC FIRST Bank",
+                    "probability": 4.7,
+                    "risk": "High"
+                },
+                {
+                    "name": "YES Bank",
+                    "probability": 2.6,
+                    "risk": "High"
+                },
+                {
+                    "name": "Axis Bank",
+                    "probability": 1.2,
+                    "risk": "High"
+                },
+                {
+                    "name": "Kotak Mahindra Bank",
+                    "probability": 1.0,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "applied",
+        "selected_bank": "Bank of India",
+        "timestamp": "2025-12-22T09:39:01.414556",
+        "_id": "3f682a76-6b64-418a-ab9e-41f7b542bb3e",
+        "applied_at": "2025-12-22T09:39:24.356722"
+    },
+    {
+        "input": {
+            "age": 25,
+            "gender": "Male",
+            "maritalStatus": "Single",
+            "dependents": "0",
+            "education": "Graduate",
+            "area": "Urban",
+            "selfEmployed": "No",
+            "experience": 5,
+            "applicantIncome": 50000,
+            "coApplicantIncome": "0",
+            "salaryMode": "Bank Transfer",
+            "existingEmi": 0,
+            "assets": "None",
+            "loanPurpose": "Medical",
+            "loanAmount": 1000000,
+            "tenure": "12"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 70.0,
+            "bank": "Kotak Mahindra Bank",
+            "bank_list": [
+                {
+                    "name": "Kotak Mahindra Bank",
+                    "probability": 31.7,
+                    "risk": "High"
+                },
+                {
+                    "name": "Bank of India",
+                    "probability": 20.3,
+                    "risk": "High"
+                },
+                {
+                    "name": "ICICI Bank",
+                    "probability": 13.6,
+                    "risk": "High"
+                },
+                {
+                    "name": "HDFC Bank",
+                    "probability": 13.4,
+                    "risk": "High"
+                },
+                {
+                    "name": "IndusInd Bank",
+                    "probability": 10.9,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "predicted",
+        "selected_bank": null,
+        "timestamp": "2025-12-22T09:54:45.384642",
+        "_id": "da084ad3-8292-40ff-99b4-4fe91eef3846"
+    },
+    {
+        "input": {
+            "age": 45,
+            "gender": "Male",
+            "maritalStatus": "Married",
+            "dependents": "2",
+            "education": "Graduate",
+            "area": "Urban",
+            "selfEmployed": "Yes",
+            "experience": 16,
+            "applicantIncome": 88000,
+            "coApplicantIncome": 63000,
+            "salaryMode": "Bank Transfer",
+            "existingEmi": 2000,
+            "assets": "Own House",
+            "loanPurpose": "Asset Purchase",
+            "loanAmount": 150000,
+            "tenure": "60",
+            "Name": "madhan",
+            "Mobile": "9898998985"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 72.69000244140625,
+            "bank": "Bank of India",
+            "bank_list": [
+                {
+                    "name": "Bank of India",
+                    "probability": 67.7,
+                    "risk": "Medium"
+                },
+                {
+                    "name": "IDFC FIRST Bank",
+                    "probability": 16.5,
+                    "risk": "High"
+                },
+                {
+                    "name": "YES Bank",
+                    "probability": 3.4,
+                    "risk": "High"
+                },
+                {
+                    "name": "Kotak Mahindra Bank",
+                    "probability": 2.6,
+                    "risk": "High"
+                },
+                {
+                    "name": "State Bank of India (SBI)",
+                    "probability": 2.3,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "applied",
+        "selected_bank": "Bank of India",
+        "timestamp": "2025-12-22T10:36:18.046428",
+        "_id": "62e70d1a-d074-4214-88e3-54417e8aee9f",
+        "applied_at": "2025-12-22T10:38:37.731388"
+    },
+    {
+        "input": {
+            "age": 36,
+            "gender": "Female",
+            "maritalStatus": "Married",
+            "dependents": "1",
+            "education": "Graduate",
+            "area": "Rural",
+            "selfEmployed": "Yes",
+            "experience": 7,
+            "applicantIncome": 72000,
+            "coApplicantIncome": null,
+            "salaryMode": "Bank Transfer",
+            "existingEmi": 2000,
+            "assets": "Own House",
+            "loanPurpose": "Asset Purchase",
+            "loanAmount": 88000,
+            "tenure": "36",
+            "Name": "madhavi",
+            "Mobile": "8454532453"
+        },
+        "prediction": {
+            "approved": true,
+            "status": "Approved",
+            "probability": 98.18000030517578,
+            "bank": "Bank of India",
+            "bank_list": [
+                {
+                    "name": "Bank of India",
+                    "probability": 91.9,
+                    "risk": "Low"
+                },
+                {
+                    "name": "YES Bank",
+                    "probability": 3.8,
+                    "risk": "High"
+                },
+                {
+                    "name": "IDFC FIRST Bank",
+                    "probability": 1.0,
+                    "risk": "High"
+                },
+                {
+                    "name": "Axis Bank",
+                    "probability": 1.0,
+                    "risk": "High"
+                },
+                {
+                    "name": "IndusInd Bank",
+                    "probability": 0.8,
+                    "risk": "High"
+                }
+            ]
+        },
+        "status": "applied",
+        "selected_bank": "Bank of India",
+        "timestamp": "2025-12-31T14:03:21.568615",
+        "_id": "885198cf-f129-4439-ba19-b069707a7d45",
+        "applied_at": "2025-12-31T14:04:34.718328"
+    }
+]

@@ -1,0 +1,66 @@
+// Custom Stepper Styling
+::ng-deep .mat-step-header {
+    .mat-step-icon {
+        background-color: #e0e7ff; // Light blue bg
+        color: #3b82f6; // Blue text
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); // Glow
+
+        &.mat-step-icon-selected,
+        &.mat-step-icon-state-edit {
+            background-color: #3b82f6; // Active blue
+            color: white;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); // Stronger glow
+            transform: scale(1.1);
+        }
+    }
+
+    .mat-step-label {
+        color: #6b7280;
+        font-weight: 500;
+
+        &.mat-step-label-active {
+            color: #1e3a8a; // Dark blue for active text
+            font-weight: 800;
+            text-shadow: 0 0 1px rgba(30, 58, 138, 0.2);
+        }
+    }
+}
+
+// Input Fields Styling - Bold Dark Borders
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #94a3b8; // Default border color (slate-400)
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #1e293b; // Focused border (slate-800) - Very Dark
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #2563eb; // Active Focus Blue (blue-600)
+}
+
+// Make the label prominent
+::ng-deep .mat-form-field-label {
+    color: #475569 !important; // Slate-600
+    font-weight: 600;
+}
+
+// Apply rounded corners and thicker borders to inputs directly if needed
+::ng-deep .mat-form-field-wrapper {
+    margin-bottom: 0.5rem;
+}
+
+// Button Styling
+button[mat-raised-button] {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 9999px; // Pill shape
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+    }
+}
